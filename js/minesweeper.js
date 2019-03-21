@@ -37,7 +37,7 @@ function counting_neighboor(grid, y, x){
         */
 
 
-        result = 0;												//Stocking the number of neigbhoor here
+        var result = 0;												//Stocking the number of neigbhoor here
         //adding 1 to result each time a neighboor is found
 
 
@@ -109,10 +109,72 @@ function counting_neighboor(grid, y, x){
 
 function discover_surrond(grid, y, x){
     var count = counting_neighboor(grid, y, x);
-    if (count == 0){
+    if (count === 0){
         map[y][x] = "E";
+        if (y + 1 < choix && x + 1 < choix && map[y + 1][x + 1] === "?"){
+            count = counting_neighboor(grid, y + 1, x + 1);
+            map[y + 1][x + 1] = count;
+            if (count === 0){
+                discover_surrond(map, y + 1, x + 1);
+            }
+        }
+        if (y - 1 >= 0 && map[y - 1][x] === "?"){
+            count = counting_neighboor(grid, y - 1, x);
+            map[y - 1][x] = count;
+            if (count === 0){
+                discover_surrond(map, y - 1, x);
+            }
+        }
+
+        if (y + 1 < choix && x - 1 >= 0 && map[y + 1][x - 1] === "?"){
+            count = counting_neighboor(grid, y + 1, x - 1);
+            map[y + 1][x - 1] = count;
+            if (count === 0){
+                discover_surrond(map, y + 1, x - 1);
+            }
+        }
+
+        if (x - 1 >= 0 && map[y][x - 1] === "?"){
+            count = counting_neighboor(grid, y, x - 1);
+            map[y][x - 1] = count;
+            if (count === 0){
+                discover_surrond(map, y, x - 1);
+            }
+        }
+
+        if (x + 1 < choix && map[y][x + 1] === "?"){
+            count = counting_neighboor(grid, y, x + 1);
+            map[y][x + 1] = count;
+            if (count === 0){
+                discover_surrond(map, y, x + 1);
+            }
+        }
+
+        if (y - 1 >= 0 && x + 1 < choix && map[y - 1][x + 1] === "?"){
+            count =  counting_neighboor(grid, y - 1, x + 1);
+            map[y - 1][x + 1] = count;
+            if (count === 0){
+                discover_surrond(map, y - 1, x + 1);
+            }
+        }
+
+        if (y + 1 < choix && map[y + 1][x] === "?"){
+            count = counting_neighboor(grid, y + 1, x);
+            map[y + 1][x] = count;
+            if (count === 0){
+                discover_surrond(map, y + 1, x);
+            }
+        }
+
+        if (y - 1 >= 0 && x - 1 >= 0 && map[y - 1][x - 1] === "?"){
+            count = counting_neighboor(grid, y - 1, x - 1);
+            map[y - 1][x - 1] = count;
+            if (count === 0){
+                discover_surrond(map, y - 1, x - 1);
+            }
+        }
     }
     else {
-        map[y][x] = count.toString();
+        map[y][x] = count;
     }
 }

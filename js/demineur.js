@@ -16,6 +16,7 @@ document.getElementById("start").addEventListener("click", function () {
    console.log(choix);
 
    map = [];
+   plateau = [];
    start();
    init_bomb(choix, 10);
 
@@ -31,7 +32,19 @@ document.getElementById("start").addEventListener("click", function () {
        plateau[i]=[];
        for (let j=0; j<parseInt(choix); j++){
            let tdElt = document.createElement("td");
-           tdElt.innerHTML = '<img src="../img/images/normal.png">';
+           var temp = [i, j].join(",");
+
+           var image = document.createElement("img");
+
+           image.setAttribute("src", "../img/images/normal.png");
+
+           image.addEventListener("mouseup" , function (e) {
+               mouse_listener(e);
+           });
+
+
+           tdElt.appendChild(image);
+
            tdElt.dataset.row=""+i;
 
            tdElt.dataset.collumn=""+j;
@@ -50,20 +63,30 @@ document.getElementById("plateau").addEventListener('contextmenu', function(evt)
 }, false);
 
 
-document.getElementById("plateau").addEventListener("mouseup",function (e) {
-    var y = e.target.dataset.row;
-    var x = e.target.dataset.collumn;
+document.getElementById("plateau").addEventListener("mouseup" , function (e) {
+        mouse_listener(e);
+    });
+
+function mouse_listener(e){
+    var y = Number(e.target.dataset.row);
+    var x = Number(e.target.dataset.collumn);
     console.log(y);
     console.log(x);
 
+
     if (e.button === 0){
-       console.log("bouton Gauche");
-       discover_surrond(map, Number(y), Number(x));
-       plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
+        if (map[y][x] === "B"){
+            reset();
+            plateau[y][x].innerHTML='<img src="../img/images/bomb.png">';
+            return;
+        }
+        console.log("bouton Gauche");
+        discover_surrond(map, y, x);
+        plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
 
     }
-   else if (e.button===2){
-       console.log("bouton droit :)");
-       plateau[y][x].innerHTML='<img src="../img/images/flag.png">';
-   }
-});
+    else if (e.button === 2){
+        console.log("bouton droit :)");
+        plateau[y][x].innerHTML='<img src="../img/images/flag.png">';
+    }
+}

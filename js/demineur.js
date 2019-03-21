@@ -15,6 +15,7 @@ let essai = niveau.addEventListener("change", function (event) {
 document.getElementById("start").addEventListener("click", function () {
    console.log(choix);
 
+   map = [];
    start();
    init_bomb(choix, 10);
 
@@ -43,15 +44,26 @@ document.getElementById("start").addEventListener("click", function () {
 });
 
 //*****************************
+
+document.getElementById("plateau").addEventListener('contextmenu', function(evt) {
+    evt.preventDefault();
+}, false);
+
+
 document.getElementById("plateau").addEventListener("mouseup",function (e) {
-   if (e.button===0){
+    var y = e.target.dataset.row;
+    var x = e.target.dataset.collumn;
+    console.log(y);
+    console.log(x);
+
+    if (e.button === 0){
        console.log("bouton Gauche");
-       plateau[e.target.dataset.row][e.target.dataset.collumn].innerHTML='<img src="../img/images/empty.png">';
-   }
+       discover_surrond(map, y.valueOf(), x.valueOf());
+       plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
+
+    }
    else if (e.button===2){
        console.log("bouton droit :)");
-       console.log(e.target.dataset.row);
-       console.log(e.target.dataset.collumn);
-       plateau[e.target.dataset.row][e.target.dataset.collumn].innerHTML='<img src="../img/images/flag.png">';
+       plateau[y][x].innerHTML='<img src="../img/images/flag.png">';
    }
 });

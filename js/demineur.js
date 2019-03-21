@@ -1,5 +1,5 @@
 let niveau = document.getElementById("niveaux");
-let choix;
+let choix = 9;
 let plateau = [];
 
 
@@ -14,6 +14,8 @@ let essai = niveau.addEventListener("change", function (event) {
 
 document.getElementById("start").addEventListener("click", function () {
    console.log(choix);
+
+   start();
 
    document.getElementById("plateau").innerHTML="";
 
@@ -43,8 +45,7 @@ document.getElementById("plateau").addEventListener("mouseup",function (e) {
        console.log("bouton Gauche");
        plateau[e.target.dataset.row][e.target.dataset.collumn].innerHTML='<img src="../img/images/empty.png">';
    }
-
-   if (e.button===2){
+   else if (e.button===2){
        console.log("bouton droit :)");
        console.log(e.target.dataset.row);
        console.log(e.target.dataset.collumn);

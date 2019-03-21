@@ -11,18 +11,20 @@
    </header>
    <section>
    <select id="niveaux">
-           <option value="vide" selected disabled>Niveaux de difficulté</option>
            <option value="9">Débutant : 9X9 cases, 10 bombes</option>
            <option value="16">Intermédiare : 16X16 cases, 40 bombes</option>
            <option value="22">Expert : 22X22 cases, 100 bombes</option>
            <option value="30">Maitre : 30X30 cases, 250 bombes</option>
-   </select>
-   <button id="start">Nouvelle Partie</button>
+        </select>
+
+       <button id="start">Nouvelle Partie</button>
+
+       <p id="timer">00:00</p>
 
    </section>
 
    <div id="plateau"></div>
 
-
+   <script src="../js/time.js"></script>
    <script src="../js/demineur.js"></script>
 </body></html>

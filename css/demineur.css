@@ -18,3 +18,10 @@ body{
 image{
     margin : 0
 }
+h1{
+   text-shadow: 0.1em 0.1em 0.2em #808080
+}
+
+html{
+   background-color: #EFEEEE;
+}

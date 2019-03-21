@@ -58,7 +58,7 @@ document.getElementById("plateau").addEventListener("mouseup",function (e) {
 
     if (e.button === 0){
        console.log("bouton Gauche");
-       discover_surrond(map, y.valueOf(), x.valueOf());
+       discover_surrond(map, Number(y), Number(x));
        plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
 
     }

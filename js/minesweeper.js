@@ -57,10 +57,9 @@ function counting_neighboor(grid, y, x){
             }
         }
 
-       if (y + 1 < choix && x - 1 >= 0){
-
+        console.log(y + 1);
+        if (y + 1 < choix && x - 1 >= 0){
             if (grid[y + 1][x - 1] === "B"){			//3.
-
                 result++;
             }
         }
@@ -104,8 +103,6 @@ function counting_neighboor(grid, y, x){
                 result++;
             }
         }
-
-
 
         return result;    //return the sum of all neighboor
 }

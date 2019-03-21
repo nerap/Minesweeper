@@ -88,7 +88,7 @@ function mouse_listener(e){
         if (is_win()){
             alert("You win in " + return_format(current_timer));
             reset();
-            return;
+
         }
     }
     else if (e.button === 2){

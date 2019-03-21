@@ -16,6 +16,9 @@ document.getElementById("start").addEventListener("click", function () {
    console.log(choix);
 
    start();
+   init_bomb(choix, 10);
+
+    document.getElementById("start").innerText="Reset";
 
    document.getElementById("plateau").innerHTML="";
 

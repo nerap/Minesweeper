@@ -26,9 +26,6 @@ function updateDisplay(){
     for (let i=0; i<map.length; i++){
 
         for (let j=0 ; j<map.length; j++) {
-            /*if (map[i][j]==="B"){
-                plateau[i][j].innerHTML = '<img src="../img/images/bomb.png">';
-            }*/
             switch (map[i][j]) {
                 
                 case "E" :
@@ -64,8 +61,6 @@ function updateDisplay(){
             }
         }
     }
-
-
 }
 
 
@@ -104,7 +99,6 @@ function counting_neighboor(grid, y, x){
             }
         }
 
-        console.log(y + 1);
         if (y + 1 < choix && x - 1 >= 0){
             if (grid[y + 1][x - 1] === "B"){			//3.
                 result++;
@@ -224,4 +218,13 @@ function discover_surrond(grid, y, x){
     else {
         map[y][x] = count;
     }
+}
+
+function is_win(){
+    for (var i = 0; i < map.length; i++) {
+        if (map[i].includes("?")) {
+            return false;
+        }
+    }
+    return true;
 }

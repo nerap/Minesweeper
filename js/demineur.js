@@ -1,24 +1,26 @@
 let niveau = document.getElementById("niveaux");
 let choix = 9;
+let bomb = 10;
 let plateau = [];
 
 
 
 
-let essai = niveau.addEventListener("change", function (event) {
-   choix =  event.target.value;
-   console.log(choix);
+let essai = niveau.addEventListener("load", function (event) {
+    var temp = event.target.value.split(",");
+   choix =  Number(temp[0]);
+   bomb = Number(temp[1]);
 });
 
 //***********Création plateau jeu *******************************
 
 document.getElementById("start").addEventListener("click", function () {
-   console.log(choix);
 
    map = [];
    plateau = [];
    start();
-   init_bomb(choix, 10);
+
+   init_bomb(choix, bomb);
 
     document.getElementById("start").innerText="Reset";
 
@@ -70,23 +72,26 @@ document.getElementById("plateau").addEventListener("mouseup" , function (e) {
 function mouse_listener(e){
     var y = Number(e.target.dataset.row);
     var x = Number(e.target.dataset.collumn);
-    console.log(y);
-    console.log(x);
-
 
     if (e.button === 0){
         if (map[y][x] === "B"){
+            var string = return_format(current_timer);
+            reset();
+            alert("You lost in " + string);
             reset();
             plateau[y][x].innerHTML='<img src="../img/images/bomb.png">';
             return;
         }
-        console.log("bouton Gauche");
         discover_surrond(map, y, x);
         //plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
         updateDisplay();
+        if (is_win()){
+            alert("You win in " + return_format(current_timer));
+            reset();
+            return;
+        }
     }
     else if (e.button === 2){
-        console.log("bouton droit :)");
         plateau[y][x].innerHTML='<img src="../img/images/flag.png">';
     }
 }

@@ -22,6 +22,53 @@ function init_bomb(size, bombs){
 }
 
 
+function updateDisplay(){
+    for (let i=0; i<map.length; i++){
+
+        for (let j=0 ; j<map.length; j++) {
+            /*if (map[i][j]==="B"){
+                plateau[i][j].innerHTML = '<img src="../img/images/bomb.png">';
+            }*/
+            switch (map[i][j]) {
+                
+                case "E" :
+                    plateau[i][j].innerHTML = '<img src="../img/images/empty.png">';
+                    break;
+                case "?" :
+                    plateau[i][j].innerHTML = '<img src="../img/images/normal.png">';
+                    break;
+                case 1 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/1.png">';
+                    break;
+                case 2 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/2.png">';
+                    break;
+                case 3 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/3.png">';
+                    break;
+                case 4 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/4.png">';
+                    break;
+                case 5 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/5.png">';
+                    break;
+                case 6 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/6.png">';
+                    break;
+                case 7 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/7.png">';
+                    break;
+                case 8 :
+                    plateau[i][j].innerHTML = '<img src="../img/images/8.png">';
+                    break;
+            }
+        }
+    }
+
+
+}
+
+
 function counting_neighboor(grid, y, x){
 
 

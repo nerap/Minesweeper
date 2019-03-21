@@ -82,8 +82,8 @@ function mouse_listener(e){
         }
         console.log("bouton Gauche");
         discover_surrond(map, y, x);
-        plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
-
+        //plateau[y][x].innerHTML='<img src="../img/images/empty.png">';
+        updateDisplay();
     }
     else if (e.button === 2){
         console.log("bouton droit :)");
